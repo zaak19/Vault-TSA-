@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vault TSA — Mon profil</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+  .gender-select { display:flex; gap:12px; margin-bottom:24px; }
+  .gender-option { flex:1; background:var(--navy-800); border:0.5px solid var(--navy-line); border-radius:14px; padding:16px 0; display:flex; flex-direction:column; align-items:center; gap:8px; cursor:pointer; color:var(--text-soft); }
+  .gender-option i { font-size:26px; color:var(--text-muted); }
+  .gender-option.selected { border-color: var(--blue-accent); }
+  .gender-option.selected i, .gender-option.selected span { color:var(--blue-accent); }
+</style>
+</head>
+<body>
+<main class="screen theme-dark">
+
+  <p style="font-size:18px; font-weight:600; margin-bottom:20px;">Mon profil</p>
+
+  <div style="display:flex; flex-direction:column; align-items:center; gap:10px; margin-bottom:24px;">
+    <div style="width:84px; height:84px; border-radius:50%; background:var(--navy-700); display:flex; align-items:center; justify-content:center; border:0.5px solid var(--navy-line);">
+      <i class="ti ti-user" style="font-size:38px; color:var(--blue-accent);"></i>
+    </div>
+    <label style="font-size:12.5px; color:var(--blue-accent); cursor:pointer;">
+      Changer la photo
+      <input type="file" accept="image/*" style="display:none;">
+    </label>
+  </div>
+
+  <p style="font-size:12px; color:var(--text-faint); margin-bottom:10px;">Choisir une figurine (si pas de photo)</p>
+  <div class="gender-select">
+    <div class="gender-option selected"><i class="ti ti-mars"></i><span>Masculin</span></div>
+    <div class="gender-option"><i class="ti ti-venus"></i><span>Féminin</span></div>
+  </div>
+
+  <div style="display:flex; flex-direction:column; gap:16px; flex:1;">
+    <div class="field">
+      <label>Nom affiché</label>
+      <input type="text" placeholder="Votre nom ou pseudonyme">
+    </div>
+    <div class="field">
+      <label>Date de naissance</label>
+      <input type="date">
+    </div>
+  </div>
+
+  <div class="toggle-row" style="margin:20px 0;">
+    <div class="toggle-label"><i class="ti ti-eye" style="font-size:17px; color:var(--text-muted);"></i><span>Rendre mon âge public</span></div>
+    <div class="switch"><div class="knob"></div></div>
+  </div>
+
+  <p class="legal-note">
+    Par défaut, seuls votre photo et votre nom sont visibles publiquement.
+    Votre âge et votre date de naissance restent privés sauf si vous choisissez de les afficher.
+  </p>
+
+  <button class="btn btn-primary" onclick="window.location.href='settings.html'">Enregistrer</button>
+
+</main>
+<script src="js/app.js"></script>
+</body>
+</html>

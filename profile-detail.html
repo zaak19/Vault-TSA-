@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vault TSA — Profil</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+  .blurred { filter: blur(4px); user-select: none; color: var(--ink-faint); }
+</style>
+</head>
+<body>
+<main class="screen theme-light">
+
+  <button class="back-link" onclick="history.back()"><i class="ti ti-arrow-left"></i>Profil</button>
+
+  <div style="display:flex; flex-direction:column; align-items:center; gap:10px; margin:20px 0;">
+    <div style="width:84px; height:84px; border-radius:50%; background:#d6e8fb; display:flex; align-items:center; justify-content:center; border:1px solid #b5d4f4;">
+      <i class="ti ti-user" style="font-size:38px; color:var(--blue-deep);"></i>
+    </div>
+    <div style="text-align:center;">
+      <p id="p-name" style="font-size:17px; font-weight:600;">A. M.</p>
+      <p id="p-cat" style="font-size:12.5px; color:var(--ink-600); margin-top:4px;">Personnalité publique · Vérifié</p>
+    </div>
+    <p id="p-price" style="font-size:22px; font-weight:600; color:var(--blue-deep); margin-top:6px;">2 400 $</p>
+  </div>
+
+  <div style="display:flex; flex-direction:column; gap:12px; margin-bottom:20px;">
+    <div class="card" style="display:flex; align-items:center; justify-content:space-between;">
+      <div style="display:flex; align-items:center; gap:10px;"><i class="ti ti-cake" style="font-size:17px; color:var(--ink-600);"></i><span style="font-size:13.5px;">Âge</span></div>
+      <span class="blurred" style="font-size:13.5px;">32 ans</span>
+    </div>
+    <div class="card" style="display:flex; align-items:center; justify-content:space-between;">
+      <div style="display:flex; align-items:center; gap:10px;"><i class="ti ti-phone" style="font-size:17px; color:var(--ink-600);"></i><span style="font-size:13.5px;">Numéro d'appel</span></div>
+      <span class="blurred" style="font-size:13.5px;">+1 555 240 88</span>
+    </div>
+    <div class="card" style="display:flex; align-items:center; justify-content:space-between;">
+      <div style="display:flex; align-items:center; gap:10px;"><i class="ti ti-brand-whatsapp" style="font-size:17px; color:var(--ink-600);"></i><span style="font-size:13.5px;">WhatsApp</span></div>
+      <span class="blurred" style="font-size:13.5px;">+1 555 240 88</span>
+    </div>
+  </div>
+
+  <div class="info-box" style="margin-bottom:20px;">
+    <i class="ti ti-lock" style="font-size:16px; color:var(--blue-deep); margin-top:1px;"></i>
+    <p>Ces informations sont débloquées après paiement et resteront accessibles dans votre historique d'achats.</p>
+  </div>
+
+  <div class="spacer"></div>
+
+  <a id="unlock-btn" href="#" class="btn btn-primary">Débloquer pour 2 400 $</a>
+
+</main>
+<script src="js/app.js"></script>
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const name = params.get('name') || 'A. M.';
+  const price = params.get('price') || '2400';
+  const cat = params.get('cat') || 'Personnalité publique';
+  document.getElementById('p-name').textContent = name;
+  document.getElementById('p-cat').textContent = cat + ' · Vérifié';
+  document.getElementById('p-price').textContent = Number(price).toLocaleString('fr-FR') + ' $';
+  document.getElementById('unlock-btn').textContent = 'Débloquer pour ' + Number(price).toLocaleString('fr-FR') + ' $';
+  document.getElementById('unlock-btn').href = 'payment-method.html?name=' + encodeURIComponent(name) + '&price=' + price;
+</script>
+</body>
+</html>

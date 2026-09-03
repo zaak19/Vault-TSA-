@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vault TSA — Contact débloqué</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+  .unlock-row { background:var(--card-white); border:0.5px solid var(--card-border); border-radius:14px; padding:14px 16px; display:flex; align-items:center; justify-content:space-between; }
+  .unlock-icon { width:30px; height:30px; border-radius:8px; display:flex; align-items:center; justify-content:center; }
+  .action-circle { width:34px; height:34px; border-radius:50%; display:flex; align-items:center; justify-content:center; text-decoration:none; }
+</style>
+</head>
+<body>
+<main class="screen theme-light">
+
+  <div style="display:flex; flex-direction:column; align-items:center; gap:10px; margin-bottom:22px;">
+    <div style="width:56px; height:56px; border-radius:50%; background:var(--success-bg); display:flex; align-items:center; justify-content:center;">
+      <i class="ti ti-circle-check" style="font-size:28px; color:var(--success);"></i>
+    </div>
+    <p style="font-size:16px; font-weight:600;">Paiement confirmé</p>
+    <p id="pay-summary" style="font-size:12px; color:var(--ink-600);">2 400 $ · PayPal</p>
+  </div>
+
+  <div style="display:flex; flex-direction:column; align-items:center; gap:8px; margin-bottom:20px;">
+    <div style="width:72px; height:72px; border-radius:50%; background:#d6e8fb; display:flex; align-items:center; justify-content:center; border:1px solid #b5d4f4;">
+      <i class="ti ti-user" style="font-size:32px; color:var(--blue-deep);"></i>
+    </div>
+    <p id="contact-name" style="font-size:16px; font-weight:600;">Alexandre Morel</p>
+    <p style="font-size:12px; color:var(--ink-600);">Personnalité publique · Vérifié</p>
+  </div>
+
+  <div style="display:flex; flex-direction:column; gap:12px; margin-bottom:16px;">
+
+    <div class="unlock-row">
+      <div style="display:flex; align-items:center; gap:10px;">
+        <div class="unlock-icon" style="background:#faf7f0; border:0.5px solid #e5ddc9;"><i class="ti ti-cake" style="font-size:15px; color:#8a7d5c;"></i></div>
+        <span style="font-size:13px;">Âge</span>
+      </div>
+      <span style="font-size:13.5px; font-weight:600;">32 ans</span>
+    </div>
+
+    <div class="unlock-row">
+      <div style="display:flex; align-items:center; gap:10px;">
+        <div class="unlock-icon" style="background:#faf7f0; border:0.5px solid #e5ddc9;"><i class="ti ti-gender-bigender" style="font-size:15px; color:#8a7d5c;"></i></div>
+        <span style="font-size:13px;">Genre</span>
+      </div>
+      <span style="font-size:13.5px; font-weight:600;">Masculin</span>
+    </div>
+
+    <div class="unlock-row">
+      <div style="display:flex; align-items:center; gap:10px;">
+        <div class="unlock-icon" style="background:#faf7f0; border:0.5px solid #e5ddc9;"><i class="ti ti-map-pin" style="font-size:15px; color:#8a7d5c;"></i></div>
+        <span style="font-size:13px;">Lieu de résidence</span>
+      </div>
+      <span style="font-size:13.5px; font-weight:600;">🇫🇷 Paris, France</span>
+    </div>
+
+    <div class="unlock-row">
+      <div style="display:flex; align-items:center; gap:10px;">
+        <div class="unlock-icon" style="background:#cfe6fb;"><i class="ti ti-phone" style="font-size:15px; color:#1076c9;"></i></div>
+        <div>
+          <p style="font-size:13px;">Numéro d'appel</p>
+          <p style="font-size:13.5px; color:var(--blue-deep); font-weight:600; margin-top:2px;">+33 6 00 00 00 00</p>
+        </div>
+      </div>
+      <a class="action-circle" style="background:#cfe6fb;" href="tel:+33600000000">
+        <i class="ti ti-phone-outgoing" style="font-size:15px; color:#1076c9;"></i>
+      </a>
+    </div>
+
+    <div class="unlock-row">
+      <div style="display:flex; align-items:center; gap:10px;">
+        <div class="unlock-icon" style="background:#d3f3d8;"><i class="ti ti-brand-whatsapp" style="font-size:15px; color:#1e8a3d;"></i></div>
+        <div>
+          <p style="font-size:13px;">WhatsApp</p>
+          <p style="font-size:13.5px; color:#1e8a3d; font-weight:600; margin-top:2px;">+33 6 00 00 00 00</p>
+        </div>
+      </div>
+      <a class="action-circle" style="background:#d3f3d8;" href="https://wa.me/33600000000" target="_blank" rel="noopener">
+        <i class="ti ti-brand-whatsapp" style="font-size:15px; color:#1e8a3d;"></i>
+      </a>
+    </div>
+
+  </div>
+
+  <p style="font-size:11px; color:#8a99ab; text-align:center; margin-bottom:16px;">
+    Touchez l'icône pour lancer l'appel ou ouvrir WhatsApp
+  </p>
+
+  <div class="spacer"></div>
+
+  <a href="browse.html" class="btn btn-primary">Retour à l'accueil</a>
+
+</main>
+<script src="js/app.js"></script>
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const name = params.get('name') || 'Alexandre Morel';
+  const price = params.get('price') || '2400';
+  document.getElementById('contact-name').textContent = name;
+  document.getElementById('pay-summary').textContent = Number(price).toLocaleString('fr-FR') + ' $ · PayPal';
+</script>
+</body>
+</html>
