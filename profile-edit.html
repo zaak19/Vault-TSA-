@@ -19,6 +19,9 @@
 
   <p style="font-size:18px; font-weight:600; margin-bottom:20px;">Mon profil</p>
 
+  <div id="lock-banner-zone"></div>
+
+  <div id="account-editable-fields">
   <div style="display:flex; flex-direction:column; align-items:center; gap:10px; margin-bottom:24px;">
     <div style="width:84px; height:84px; border-radius:50%; background:var(--navy-700); display:flex; align-items:center; justify-content:center; border:0.5px solid var(--navy-line);">
       <i class="ti ti-user" style="font-size:38px; color:var(--blue-accent);"></i>
@@ -50,15 +53,20 @@
     <div class="toggle-label"><i class="ti ti-eye" style="font-size:17px; color:var(--text-muted);"></i><span>Rendre mon âge public</span></div>
     <div class="switch"><div class="knob"></div></div>
   </div>
+  </div>
 
   <p class="legal-note">
     Par défaut, seuls votre photo et votre nom sont visibles publiquement.
     Votre âge et votre date de naissance restent privés sauf si vous choisissez de les afficher.
+    Ces informations ne sont modifiables qu'une fois tous les 3 mois.
   </p>
 
-  <button class="btn btn-primary" onclick="window.location.href='settings.html'">Enregistrer</button>
+  <button class="btn btn-primary" id="account-profile-submit" onclick="vaultRecordEdit('vault_account_last_edit'); window.location.href='settings.html';">Enregistrer</button>
 
 </main>
 <script src="app.js"></script>
+<script>
+  applyVaultEditLock('vault_account_last_edit', '#account-editable-fields', '#lock-banner-zone', '#account-profile-submit');
+</script>
 </body>
 </html>

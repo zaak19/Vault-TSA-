@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vault TSA — Retirer mes fonds</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+  .pm-row { background:var(--card-white); border:0.5px solid var(--card-border); border-radius:14px; padding:14px 16px; display:flex; align-items:center; gap:14px; cursor:pointer; text-decoration:none; color:inherit; }
+  .pm-row.selected { border:1px solid var(--blue-deep); }
+  .pm-icon { width:38px; height:38px; border-radius:10px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+</style>
+</head>
+<body>
+<main class="screen theme-light">
+
+  <button class="back-link" onclick="history.back()"><i class="ti ti-arrow-left"></i>Retirer mes fonds</button>
+  <p id="amount-label" style="font-size:12.5px; color:var(--ink-600); margin:0 0 8px 26px;">Solde disponible : 4 560 $</p>
+  <p style="font-size:11px; color:var(--ink-faint); margin:0 0 24px 26px;">Choisissez le moyen sur lequel recevoir votre retrait</p>
+
+  <div style="display:flex; flex-direction:column; gap:12px; flex:1;">
+
+    <label class="pm-row selected">
+      <input type="radio" name="wm" value="paypal" checked style="display:none;">
+      <div class="pm-icon" style="background:#cfe6fb;"><i class="ti ti-brand-paypal" style="font-size:20px; color:#1076c9;"></i></div>
+      <span style="flex:1; font-size:14px;">PayPal</span>
+      <i class="ti ti-circle-check" style="font-size:20px; color:var(--blue-deep);"></i>
+    </label>
+
+    <label class="pm-row">
+      <input type="radio" name="wm" value="visa" style="display:none;">
+      <div class="pm-icon" style="background:#faf7f0; border:0.5px solid #e5ddc9;"><i class="ti ti-credit-card" style="font-size:20px; color:#8a7d5c;"></i></div>
+      <span style="flex:1; font-size:14px;">Visa / carte bancaire</span>
+      <i class="ti ti-chevron-right" style="font-size:16px; color:var(--ink-faint);"></i>
+    </label>
+
+    <label class="pm-row">
+      <input type="radio" name="wm" value="wu" style="display:none;">
+      <div class="pm-icon" style="background:#fdf0b8;"><i class="ti ti-building-bank" style="font-size:20px; color:#8a6d00;"></i></div>
+      <span style="flex:1; font-size:14px;">Western Union</span>
+      <i class="ti ti-chevron-right" style="font-size:16px; color:var(--ink-faint);"></i>
+    </label>
+
+    <label class="pm-row">
+      <input type="radio" name="wm" value="gpay" style="display:none;">
+      <div class="pm-icon" style="background:#fbd8d6;"><i class="ti ti-brand-google" style="font-size:20px; color:#c23327;"></i></div>
+      <span style="flex:1; font-size:14px;">Google Pay</span>
+      <i class="ti ti-chevron-right" style="font-size:16px; color:var(--ink-faint);"></i>
+    </label>
+
+    <label class="pm-row">
+      <input type="radio" name="wm" value="wise" style="display:none;">
+      <div class="pm-icon" style="background:#d3f3d8;"><i class="ti ti-world" style="font-size:20px; color:#1e8a3d;"></i></div>
+      <span style="flex:1; font-size:14px;">Wise (virement international)</span>
+      <i class="ti ti-chevron-right" style="font-size:16px; color:var(--ink-faint);"></i>
+    </label>
+
+  </div>
+
+  <a id="continue-btn" href="withdraw-confirm.html?amount=4560" class="btn btn-primary" style="margin-top:20px;">Retirer 4 560 $</a>
+
+</main>
+<script src="app.js"></script>
+<script>
+  document.querySelectorAll('.pm-row').forEach(row => {
+    row.addEventListener('click', () => {
+      document.querySelectorAll('.pm-row').forEach(r => r.classList.remove('selected'));
+      row.classList.add('selected');
+      row.querySelector('input').checked = true;
+    });
+  });
+</script>
+</body>
+</html>
