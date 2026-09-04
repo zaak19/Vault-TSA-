@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vault TSA — Vérification d'identité</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+  .id-slot {
+    height: 100px; border-radius: 14px; background: var(--navy-800);
+    border: 1px dashed var(--navy-line); display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 6px; cursor: pointer;
+    position: relative; overflow: hidden;
+  }
+  .id-slot i { font-size: 24px; color: var(--text-faint); }
+  .id-slot span { font-size: 11.5px; color: var(--text-faint); }
+  .id-slot.filled { border-style: solid; border-color: var(--blue-accent); }
+  .id-slot.filled i, .id-slot.filled span { display: none; }
+  .id-slot img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; }
+</style>
+</head>
+<body>
+<main class="screen theme-dark">
+
+  <button class="back-link" onclick="window.location.href='seller-step2.html'"><i class="ti ti-arrow-left"></i><span class="title">Vérification d'identité</span></button>
+  <p class="step-label" style="padding-left:26px;">Étape obligatoire avant publication</p>
+
+  <div class="info-box" style="background:var(--navy-800); border-color:var(--navy-line); margin-bottom:20px;">
+    <i class="ti ti-shield-check" style="font-size:18px; color:var(--blue-accent); margin-top:1px;"></i>
+    <p style="color:var(--text-muted);">
+      Pour garantir la sécurité des acheteurs, nous vérifions l'identité de chaque vendeur.
+      Ces documents restent strictement confidentiels et ne sont jamais partagés publiquement.
+    </p>
+  </div>
+
+  <form id="id-form" style="display:flex; flex-direction:column; flex:1;" onsubmit="event.preventDefault(); window.location.href='seller-verification-pending.html';">
+    <div style="display:flex; flex-direction:column; gap:14px; flex:1;">
+
+      <div>
+        <label style="font-size:13px; color:var(--text-muted); display:block; margin-bottom:8px;">Pièce d'identité — recto</label>
+        <label class="id-slot" data-slot="front">
+          <input type="file" accept="image/*" required style="display:none;">
+          <i class="ti ti-id"></i>
+          <span>Ajouter le recto</span>
+        </label>
+      </div>
+
+      <div>
+        <label style="font-size:13px; color:var(--text-muted); display:block; margin-bottom:8px;">Pièce d'identité — verso</label>
+        <label class="id-slot" data-slot="back">
+          <input type="file" accept="image/*" required style="display:none;">
+          <i class="ti ti-id"></i>
+          <span>Ajouter le verso</span>
+        </label>
+      </div>
+
+      <div>
+        <label style="font-size:13px; color:var(--text-muted); display:block; margin-bottom:8px;">Selfie avec la pièce d'identité</label>
+        <label class="id-slot" data-slot="selfie">
+          <input type="file" accept="image/*" required style="display:none;">
+          <i class="ti ti-camera-selfie"></i>
+          <span>Ajouter la photo</span>
+        </label>
+        <p class="field-hint">Tenez votre pièce d'identité à côté de votre visage, bien lisible.</p>
+      </div>
+
+    </div>
+
+    <p class="legal-note">
+      La vérification prend généralement jusqu'à 2 heures. Vous recevrez un email de confirmation
+      dès que votre profil sera validé et publié.
+    </p>
+
+    <button type="submit" class="btn btn-primary">Envoyer pour vérification</button>
+  </form>
+
+</main>
+<script src="app.js"></script>
+<script>
+  document.querySelectorAll('.id-slot input[type="file"]').forEach(input => {
+    input.addEventListener('change', () => {
+      const file = input.files && input.files[0];
+      const slot = input.closest('.id-slot');
+      if (!file || !slot) return;
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        let img = slot.querySelector('img');
+        if (!img) { img = document.createElement('img'); slot.appendChild(img); }
+        img.src = e.target.result;
+        slot.classList.add('filled');
+      };
+      reader.readAsDataURL(file);
+    });
+  });
+</script>
+</body>
+</html>
