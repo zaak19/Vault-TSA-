@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vault TSA — Historique</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+  .hist-tabs { display:flex; background:var(--navy-800); border:0.5px solid var(--navy-line); border-radius:12px; padding:4px; margin-bottom:20px; }
+  .hist-tab { flex:1; text-align:center; padding:9px 0; border-radius:9px; color:var(--text-muted); font-size:13.5px; cursor:pointer; border:none; background:none; font-family:inherit; }
+  .hist-tab.active { background:var(--blue-accent); color:#fff; font-weight:600; }
+  .hist-row { background:var(--navy-800); border:0.5px solid var(--navy-line); border-radius:14px; padding:14px 16px; margin-bottom:12px; }
+  .hist-row-top { display:flex; align-items:center; gap:12px; margin-bottom:10px; }
+  .hist-avatar { width:40px; height:40px; border-radius:50%; background:var(--navy-700); display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:600; flex-shrink:0; }
+  .hist-actions { display:flex; gap:8px; }
+  .hist-action { flex:1; display:flex; align-items:center; justify-content:center; gap:6px; height:36px; border-radius:9px; background:var(--navy-700); color:var(--text-muted); font-size:12px; text-decoration:none; }
+  .hist-summary { background:#0d2036; border:0.5px solid var(--navy-line); border-radius:14px; padding:16px; margin-top:6px; text-align:center; }
+  .hist-empty { text-align:center; padding:40px 20px; color:var(--text-faint); font-size:13px; }
+</style>
+</head>
+<body>
+<main class="screen theme-dark">
+
+  <p style="font-size:18px; font-weight:600; margin-bottom:20px;">Historique</p>
+
+  <div class="hist-tabs">
+    <button class="hist-tab active" id="tab-buy" onclick="showTab('buy')">Achats</button>
+    <button class="hist-tab" id="tab-sell" onclick="showTab('sell')">Ventes</button>
+  </div>
+
+  <!-- Onglet Achats -->
+  <div id="panel-buy" style="display:flex; flex-direction:column; flex:1;">
+
+    <div class="hist-row">
+      <div class="hist-row-top">
+        <div class="hist-avatar" style="color:var(--blue-accent);">A.M</div>
+        <div style="flex:1;">
+          <p style="font-size:13.5px; font-weight:600;">Alexandre Morel</p>
+          <p style="font-size:11.5px; color:var(--text-faint); margin-top:2px;">3 septembre 2026</p>
+        </div>
+        <p style="font-size:14px; font-weight:600; color:var(--blue-accent);">2 400 $</p>
+      </div>
+      <div class="hist-actions">
+        <a href="tel:+33600000000" class="hist-action"><i class="ti ti-phone" style="font-size:14px;"></i>Appeler</a>
+        <a href="https://wa.me/33600000000" class="hist-action"><i class="ti ti-brand-whatsapp" style="font-size:14px;"></i>WhatsApp</a>
+      </div>
+    </div>
+
+    <div class="hist-row">
+      <div class="hist-row-top">
+        <div class="hist-avatar" style="color:var(--blue-accent);">S.K</div>
+        <div style="flex:1;">
+          <p style="font-size:13.5px; font-weight:600;">S. K.</p>
+          <p style="font-size:11.5px; color:var(--text-faint); margin-top:2px;">28 août 2026</p>
+        </div>
+        <p style="font-size:14px; font-weight:600; color:var(--blue-accent);">780 $</p>
+      </div>
+      <div class="hist-actions">
+        <a href="tel:+15552400000" class="hist-action"><i class="ti ti-phone" style="font-size:14px;"></i>Appeler</a>
+        <a href="https://wa.me/15552400000" class="hist-action"><i class="ti ti-brand-whatsapp" style="font-size:14px;"></i>WhatsApp</a>
+      </div>
+    </div>
+
+    <p style="text-align:center; font-size:11.5px; color:var(--text-ghost); padding:8px 0;">Total dépensé : 3 180 $</p>
+  </div>
+
+  <!-- Onglet Ventes -->
+  <div id="panel-sell" style="display:none; flex-direction:column; flex:1;">
+
+    <div class="hist-row" style="display:flex; align-items:center; gap:12px;">
+      <div class="hist-avatar" style="color:var(--success);"><i class="ti ti-arrow-down-left" style="font-size:16px;"></i></div>
+      <div style="flex:1;">
+        <p style="font-size:13.5px; font-weight:600;">Acheteur anonyme</p>
+        <p style="font-size:11.5px; color:var(--text-faint); margin-top:2px;">2 septembre 2026</p>
+      </div>
+      <p style="font-size:14px; font-weight:600; color:var(--success);">+2 400 $</p>
+    </div>
+
+    <div class="hist-row" style="display:flex; align-items:center; gap:12px;">
+      <div class="hist-avatar" style="color:var(--success);"><i class="ti ti-arrow-down-left" style="font-size:16px;"></i></div>
+      <div style="flex:1;">
+        <p style="font-size:13.5px; font-weight:600;">Acheteur anonyme</p>
+        <p style="font-size:11.5px; color:var(--text-faint); margin-top:2px;">30 août 2026</p>
+      </div>
+      <p style="font-size:14px; font-weight:600; color:var(--success);">+2 400 $</p>
+    </div>
+
+    <div class="hist-summary">
+      <p style="font-size:12px; color:var(--text-faint); margin-bottom:6px;">Revenu total</p>
+      <p style="font-size:22px; font-weight:600;">4 800 $</p>
+      <p style="font-size:11px; color:var(--text-ghost); margin-top:4px;">2 ventes depuis la publication de votre profil</p>
+    </div>
+  </div>
+
+  <nav class="tabbar">
+    <a href="browse.html" class="tab"><i class="ti ti-home" style="font-size:20px;"></i><span>Accueil</span></a>
+    <a href="history.html" class="tab active"><i class="ti ti-history" style="font-size:20px;"></i><span>Historique</span></a>
+    <a href="settings.html" class="tab"><i class="ti ti-settings" style="font-size:20px;"></i><span>Paramètres</span></a>
+  </nav>
+
+</main>
+<script src="app.js"></script>
+<script>
+  function showTab(tab) {
+    document.getElementById('tab-buy').classList.toggle('active', tab === 'buy');
+    document.getElementById('tab-sell').classList.toggle('active', tab === 'sell');
+    document.getElementById('panel-buy').style.display = tab === 'buy' ? 'flex' : 'none';
+    document.getElementById('panel-sell').style.display = tab === 'sell' ? 'flex' : 'none';
+  }
+</script>
+</body>
+</html>
