@@ -6,36 +6,65 @@
 <title>Vault TSA — Accueil</title>
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+  #welcome-screen {
+    position: relative;
+    padding: 0;
+    overflow: hidden;
+    justify-content: flex-end;
+  }
+  .splash-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    opacity: 0;
+    transform: scale(1.12);
+    animation: vaultBgIn 1.4s ease-out 0s forwards,
+               vaultBgZoom 9s ease-out 0s forwards;
+  }
+  @keyframes vaultBgIn {
+    0%   { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  @keyframes vaultBgZoom {
+    0%   { transform: scale(1.12); }
+    100% { transform: scale(1); }
+  }
+  .splash-scrim {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(3,16,28,0) 45%, rgba(3,16,28,0.55) 70%, rgba(3,16,28,0.92) 100%);
+    pointer-events: none;
+  }
+  .splash-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 22px 28px;
+    opacity: 0;
+    transform: translateY(16px);
+    animation: vaultFadeUp 0.7s ease-out 1.15s forwards;
+  }
+  @keyframes vaultFadeUp {
+    0%   { opacity: 0; transform: translateY(16px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  /* Si l'animation a déjà été vue dans cette session, on affiche tout directement */
+  .vault-anim-skip .splash-bg { opacity: 1; transform: scale(1); animation: none; }
+  .vault-anim-skip .splash-content { opacity: 1; transform: translateY(0); animation: none; }
+</style>
 </head>
 <body>
-<main class="screen theme-dark" style="justify-content: space-between;">
+<main class="screen theme-dark" id="welcome-screen">
 
-  <div class="spacer"></div>
+  <img class="splash-bg" src="splash-bg.png" alt="Vault TSA">
+  <div class="splash-scrim"></div>
 
-  <div class="logo-wrap">
-    <svg width="100" height="100" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Logo Vault TSA">
-      <defs>
-        <linearGradient id="vblue" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stop-color="#3fa9ff"/>
-          <stop offset="100%" stop-color="#0a3d6b"/>
-        </linearGradient>
-      </defs>
-      <path d="M30 62 L82 62 L100 150 L118 62 L170 62 L110 175 L90 175 Z" fill="url(#vblue)"/>
-      <path d="M118 62 L170 62 L120 150 Z" fill="#2b2f36" opacity="0.9"/>
-      <circle cx="100" cy="95" r="6" fill="#061524"/>
-      <path d="M75 68 v-15 a25 25 0 0 1 50 0 v15" fill="none" stroke="#3fa9ff" stroke-width="9"/>
-      <rect x="72" y="66" width="56" height="42" rx="10" fill="#0a3d6b"/>
-      <rect x="94" y="82" width="12" height="18" rx="4" fill="#3fa9ff"/>
-    </svg>
-    <div style="text-align:center;">
-      <p class="brand-name">Vault TSA</p>
-      <p class="brand-tag">Votre contact, votre valeur</p>
-    </div>
-  </div>
-
-  <div class="spacer"></div>
-
-  <div>
+  <div class="splash-content">
     <a href="terms.html?next=signup" class="btn btn-primary" style="margin-bottom:12px;">Créer un compte</a>
     <a href="login.html" class="btn btn-outline">Se connecter</a>
     <p style="text-align:center; font-size:12px; color:var(--text-ghost); margin-top:10px;">
@@ -45,5 +74,13 @@
 
 </main>
 <script src="app.js"></script>
+<script>
+  // L'animation d'entrée ne se rejoue qu'une fois par session
+  if (sessionStorage.getItem('vault_splash_seen')) {
+    document.getElementById('welcome-screen').classList.add('vault-anim-skip');
+  } else {
+    sessionStorage.setItem('vault_splash_seen', '1');
+  }
+</script>
 </body>
 </html>
