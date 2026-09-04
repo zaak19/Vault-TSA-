@@ -18,7 +18,11 @@
   <div class="field-row" style="margin-bottom:20px;">
     <div class="field" style="margin-bottom:0;">
       <label>Pays</label>
-      <div class="country-select">🇫🇷 <span style="flex:1;">France</span> <i class="ti ti-chevron-down"></i></div>
+      <div class="country-select" id="residence-country" data-country-picker="residence" data-country-code="FR">
+        <span class="picker-flag">🇫🇷</span>
+        <span class="picker-name" style="flex:1;">France</span>
+        <i class="ti ti-chevron-down"></i>
+      </div>
     </div>
     <div class="field" style="margin-bottom:0;">
       <label>Ville</label>
@@ -29,7 +33,11 @@
   <div class="field">
     <label>Numéro d'appel</label>
     <div class="phone-row">
-      <div class="country-code">🇫🇷 +33 <i class="ti ti-chevron-down" style="font-size:13px;"></i></div>
+      <div class="country-code" id="call-code" data-country-picker="dial" data-country-code="FR" data-sync-target="whatsapp-code">
+        <span class="picker-flag">🇫🇷</span>
+        <span class="picker-dial">+33</span>
+        <i class="ti ti-chevron-down" style="font-size:13px;"></i>
+      </div>
       <input type="tel" placeholder="6 00 00 00 00">
     </div>
   </div>
@@ -37,7 +45,11 @@
   <div class="field">
     <label>Numéro WhatsApp</label>
     <div class="phone-row">
-      <div class="country-code">🇫🇷 +33 <i class="ti ti-chevron-down" style="font-size:13px;"></i></div>
+      <div class="country-code" id="whatsapp-code" data-country-picker="dial" data-country-code="FR">
+        <span class="picker-flag">🇫🇷</span>
+        <span class="picker-dial">+33</span>
+        <i class="ti ti-chevron-down" style="font-size:13px;"></i>
+      </div>
       <input type="tel" placeholder="6 00 00 00 00">
     </div>
     <p class="field-hint">Indicatif repris automatiquement du numéro d'appel — modifiable si différent</p>
@@ -56,6 +68,7 @@
   <button class="btn btn-primary" onclick="alert('Profil publié (démo).'); window.location.href='browse.html';">Publier mon profil</button>
 
 </main>
+<script src="countries.js"></script>
 <script src="app.js"></script>
 </body>
 </html>
