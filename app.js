@@ -68,6 +68,26 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // Aperçu des photos vendeur (3 emplacements)
+  document.querySelectorAll('.seller-photo-slot input[type="file"]').forEach(input => {
+    input.addEventListener('change', () => {
+      const file = input.files && input.files[0];
+      const slot = input.closest('.seller-photo-slot');
+      if (!file || !slot) return;
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        let img = slot.querySelector('img');
+        if (!img) {
+          img = document.createElement('img');
+          slot.appendChild(img);
+        }
+        img.src = e.target.result;
+        slot.classList.add('filled');
+      };
+      reader.readAsDataURL(file);
+    });
+  });
+
   // ---- Sélecteur de pays (fenêtre coulissante) ----
   if (typeof VAULT_COUNTRIES !== 'undefined') {
     initCountryPickers();

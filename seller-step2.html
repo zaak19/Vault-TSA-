@@ -60,6 +60,28 @@
     <textarea placeholder="Présentez-vous en quelques mots..."></textarea>
   </div>
 
+  <div style="margin-bottom:16px;">
+    <label style="font-size:13px; color:var(--text-muted); display:block; margin-bottom:10px;">Photos de vous (3 requises)</label>
+    <div style="display:flex; gap:10px;">
+      <label class="seller-photo-slot" data-slot="1">
+        <input type="file" accept="image/*" style="display:none;">
+        <i class="ti ti-camera-plus"></i>
+        <span>Photo 1</span>
+      </label>
+      <label class="seller-photo-slot" data-slot="2">
+        <input type="file" accept="image/*" style="display:none;">
+        <i class="ti ti-camera-plus"></i>
+        <span>Photo 2</span>
+      </label>
+      <label class="seller-photo-slot" data-slot="3">
+        <input type="file" accept="image/*" style="display:none;">
+        <i class="ti ti-camera-plus"></i>
+        <span>Photo 3</span>
+      </label>
+    </div>
+    <p class="field-hint">Ces photos apparaissent sur votre profil public et aident les acheteurs à vous identifier avec certitude avant de payer.</p>
+  </div>
+
   <p class="legal-note">
     En activant la vente, vous confirmez que ces coordonnées sont les vôtres et acceptez
     qu'elles soient révélées aux acheteurs après paiement.
